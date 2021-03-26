@@ -1,0 +1,7 @@
+#ifndef HEADERS_SF_MENUTYPES
+#define HEADERS_SF_MENUTYPES
+
+#define MAINMENU 0
+#define SETTINGS 1
+
+#endif /* HEADERS_SF_MENUTYPES */

@@ -1,0 +1,11 @@
+#ifndef SRC_ENGINE_RENDERENGINE_DEFFERED_TERRAIN_NORMALCOMP_NORMALCOMPGEN
+#define SRC_ENGINE_RENDERENGINE_DEFFERED_TERRAIN_NORMALCOMP_NORMALCOMPGEN
+
+#include "TR/TRHeightmap.h"
+#include "TR/TRTexture.h"
+
+namespace NormalCompGen {
+    TRTexture *generateTerrainNormals(TRHeightmap *heightMap, float strength);
+}
+
+#endif /* SRC_ENGINE_RENDERENGINE_DEFFERED_TERRAIN_NORMALCOMP_NORMALCOMPGEN */

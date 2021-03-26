@@ -1,0 +1,72 @@
+#version 430 core
+
+layout (local_size_x = 1, local_size_y = 1) in;
+
+layout (binding = 0, rgba32f) readonly uniform image2D t_h0k;
+layout (binding = 1, rgba32f) readonly uniform image2D t_h0minusk;
+
+layout (binding = 2, rgba32f) writeonly uniform image2D t_hkt;
+layout (binding = 3, rgba32f) writeonly uniform image2D t_chop_hkt;
+
+uniform float L;
+uniform float time;
+uniform int N;
+
+const float PI = 3.14159265358979323846;
+
+struct complex {
+    float re;
+    float im;
+};
+
+complex add(complex a, complex b) {
+    complex c;
+    c.re = a.re + b.re;
+    c.im = a.im + b.im;
+    return c;
+}
+
+complex mul(complex a, complex b) {
+    complex c;
+    c.re = a.re * b.re - a.im * b.im;
+    c.im = a.re * b.im + a.im * b.re;
+    return c;
+}
+
+complex conj(complex c) {
+    return complex(c.re, -c.im);
+}
+
+
+void main(void) {
+
+    vec2 xx = vec2(gl_GlobalInvocationID.xy) - (float(N) / 2.0);
+
+    vec2 k = vec2(2.0 * PI * xx.x / L, 2.0 * PI * xx.y / L);
+
+    float lenk = length(k);
+    lenk = max(lenk, 0.0001);
+
+    float w = sqrt(9.81 * lenk);
+
+    vec4 tmp = imageLoad(t_h0k, ivec2(gl_GlobalInvocationID.xy));
+    complex h0k = complex(tmp.r, tmp.g);
+    tmp = imageLoad(t_h0minusk, ivec2(gl_GlobalInvocationID.xy));
+    complex h0minusk = complex(tmp.r, tmp.g);
+
+    float co = cos(w * time);
+    float si = sin(w * time);
+
+    complex iwt = complex(co, si);
+    complex iwtinv = complex(co, -si);
+
+    complex hkt = add(mul(h0k, iwt), mul(conj(h0minusk), iwtinv));
+    imageStore(t_hkt, ivec2(gl_GlobalInvocationID.xy), vec4(hkt.re, hkt.im, 0.0, 1.0));
+
+    // dx
+    complex dx = mul(complex(0.0, -k.x / lenk), hkt);
+    // dz
+    complex dz = mul(complex(0.0, -k.y / lenk), hkt);
+
+    imageStore(t_chop_hkt, ivec2(gl_GlobalInvocationID.xy), vec4(dx.re, dx.im, dz.re, dz.im));
+}

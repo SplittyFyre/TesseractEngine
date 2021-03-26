@@ -1,0 +1,168 @@
+#version 430 core
+
+const float PI = 3.14159265358979323846;
+
+layout (local_size_x = 16, local_size_y = 16) in;
+
+layout (binding = 0, rgba32f) readonly uniform image2D twiddle;
+
+layout (binding = 1, rgba32f) uniform image2D ping;
+layout (binding = 2, rgba32f) uniform image2D pong;
+
+layout (binding = 3, rgba32f) uniform image2D chop_ping;
+layout (binding = 4, rgba32f) uniform image2D chop_pong;
+
+
+uniform bool pingpong;
+uniform bool horiz;
+uniform int stage;
+
+
+struct complex {
+    float re;
+    float im;
+};
+
+complex add(complex a, complex b) {
+    complex c;
+    c.re = a.re + b.re;
+    c.im = a.im + b.im;
+    return c;
+}
+
+complex mul(complex a, complex b) {
+    complex c;
+    c.re = a.re * b.re - a.im * b.im;
+    c.im = a.re * b.im + a.im * b.re;
+    return c;
+}
+
+complex conj(complex c) {
+    return complex(c.re, -c.im);
+}
+
+
+
+void horizontal() {
+    uint x = gl_GlobalInvocationID.x;
+    uint y = gl_GlobalInvocationID.y;
+
+    if (pingpong) { // pong
+        vec4 data = imageLoad(twiddle, ivec2(stage, x));
+        vec2 _p = imageLoad(pong, ivec2(data.z, y)).rg;
+        vec2 _q = imageLoad(pong, ivec2(data.w, y)).rg;
+        vec2 _r = data.xy;
+
+        vec4 cp = imageLoad(chop_pong, ivec2(data.z, y));
+        vec4 cq = imageLoad(chop_pong, ivec2(data.w, y));
+
+        complex p = complex(_p.x, _p.y);
+        complex q = complex(_q.x, _q.y);
+        complex r = complex(_r.x, _r.y);
+        complex ans = add(p, mul(r, q));
+        imageStore(ping, ivec2(x, y), vec4(ans.re, ans.im, 0.0, 1.0));
+
+        p = complex(cp.r, cp.g);
+        q = complex(cq.r, cq.g);
+        complex ansx = add(p, mul(r, q));
+
+        p = complex(cp.b, cp.a);
+        q = complex(cq.b, cq.a);
+        complex ansz = add(p, mul(r, q));
+
+        imageStore(chop_ping, ivec2(x, y), vec4(ansx.re, ansx.im, ansz.re, ansz.im));
+    }
+    else { // ping
+        vec4 data = imageLoad(twiddle, ivec2(stage, x));
+        vec2 _p = imageLoad(ping, ivec2(data.z, y)).rg;
+        vec2 _q = imageLoad(ping, ivec2(data.w, y)).rg;
+        vec2 _r = data.xy;
+
+        vec4 cp = imageLoad(chop_ping, ivec2(data.z, y));
+        vec4 cq = imageLoad(chop_ping, ivec2(data.w, y));
+
+        complex p = complex(_p.x, _p.y);
+        complex q = complex(_q.x, _q.y);
+        complex r = complex(_r.x, _r.y);
+        complex ans = add(p, mul(r, q));
+        imageStore(pong, ivec2(x, y), vec4(ans.re, ans.im, 0.0, 1.0));
+
+        p = complex(cp.r, cp.g);
+        q = complex(cq.r, cq.g);
+        complex ansx = add(p, mul(r, q));
+
+        p = complex(cp.b, cp.a);
+        q = complex(cq.b, cq.a);
+        complex ansz = add(p, mul(r, q));
+
+        imageStore(chop_pong, ivec2(x, y), vec4(ansx.re, ansx.im, ansz.re, ansz.im));
+    }
+}
+
+
+void vertical() {
+    uint x = gl_GlobalInvocationID.x;
+    uint y = gl_GlobalInvocationID.y;
+
+    if (pingpong) { // pong
+        vec4 data = imageLoad(twiddle, ivec2(stage, y));
+        vec2 _p = imageLoad(pong, ivec2(x, data.z)).rg;
+        vec2 _q = imageLoad(pong, ivec2(x, data.w)).rg;
+        vec2 _r = data.xy;
+
+        vec4 cp = imageLoad(chop_pong, ivec2(x, data.z));
+        vec4 cq = imageLoad(chop_pong, ivec2(x, data.w));
+
+        complex p = complex(_p.x, _p.y);
+        complex q = complex(_q.x, _q.y);
+        complex r = complex(_r.x, _r.y);
+        complex ans = add(p, mul(r, q));
+        imageStore(ping, ivec2(x, y), vec4(ans.re, ans.im, 0.0, 1.0));
+
+        p = complex(cp.r, cp.g);
+        q = complex(cq.r, cq.g);
+        complex ansx = add(p, mul(r, q));
+
+        p = complex(cp.b, cp.a);
+        q = complex(cq.b, cq.a);
+        complex ansz = add(p, mul(r, q));
+
+        imageStore(chop_ping, ivec2(x, y), vec4(ansx.re, ansx.im, ansz.re, ansz.im));
+    }
+    else { // ping
+        vec4 data = imageLoad(twiddle, ivec2(stage, y));
+        vec2 _p = imageLoad(ping, ivec2(x, data.z)).rg;
+        vec2 _q = imageLoad(ping, ivec2(x, data.w)).rg;
+        vec2 _r = data.xy;
+
+        vec4 cp = imageLoad(chop_ping, ivec2(x, data.z));
+        vec4 cq = imageLoad(chop_ping, ivec2(x, data.w));
+
+        complex p = complex(_p.x, _p.y);
+        complex q = complex(_q.x, _q.y);
+        complex r = complex(_r.x, _r.y);
+        complex ans = add(p, mul(r, q));
+        imageStore(pong, ivec2(x, y), vec4(ans.re, ans.im, 0.0, 1.0));
+
+        p = complex(cp.r, cp.g);
+        q = complex(cq.r, cq.g);
+        complex ansx = add(p, mul(r, q));
+
+        p = complex(cp.b, cp.a);
+        q = complex(cq.b, cq.a);
+        complex ansz = add(p, mul(r, q));
+
+        imageStore(chop_pong, ivec2(x, y), vec4(ansx.re, ansx.im, ansz.re, ansz.im));
+    }
+}
+
+
+
+void main(void) {
+    if (horiz) {
+        horizontal();
+    }
+    else {
+        vertical();
+    }
+}
