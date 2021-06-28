@@ -30,6 +30,7 @@ TesseractEngine::TesseractEngine(unsigned int maxEntityInstances, unsigned int m
 
 	renderer = new DefferedRenderSystem(maxEntityInstances);
 	defferedProcessor = new DefferedProcessing();
+	defferedProcessorWater = new DefferedProcessingW();
 	particleRenderer = new ParticleRenderer(maxParticleInstances);
 	blurrer = new GaussianBlur(blurFboScale, 1);
 	bloom = new BloomCombiner(1.0f);
@@ -67,11 +68,23 @@ void TesseractEngine::renderScene(TRScene *scene) {
 
 	gbuffer->blitDepth(fbo);
 	fbo->bindToDraw();					// deffered	
+	
 	defferedProcessor->doDefferedProcessing(scene, gbuffer);
+	
 	particlesFuture.get();
 	particleRenderer->render(scene);	// render alpha
 	lensFlareRenderer->doQuery(scene);
 	fbo->unbind();
+
+	fbo->blit(gbuffer, 0, 0, false);
+	fbo->bindToDraw();
+	defferedProcessorWater->doDefferedProcessing(scene, gbuffer);
+	fbo->unbind();
+
+	fbo->blitToScreen(0);
+	scene->cleanUp();
+	return;
+
 										// blur bright buffer
 	blurrer->renderBlur(gbuffer->getTextureHandle(3));
 
@@ -110,6 +123,7 @@ TesseractEngine::~TesseractEngine() {
 	delete tp;
 	delete renderer;
 	delete defferedProcessor;
+	delete defferedProcessorWater;
 	delete particleRenderer;
 	delete blurrer;
 	delete bloom;

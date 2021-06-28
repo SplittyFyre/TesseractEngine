@@ -32,7 +32,7 @@ void DefferedRenderSystem::renderMainPass(TRScene *scene, std::future<void> &sgU
     
     if (scene->fftwater != nullptr) {
         scene->fftwater->update(scene->camera.get());
-        fftWaterRenderer.render(scene);   
+        //fftWaterRenderer.render(scene);   
     }
 
     staticEntityRenderer.render(scene); // give scene graph more updating time if needed

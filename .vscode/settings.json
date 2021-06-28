@@ -66,6 +66,7 @@
         "stop_token": "cpp",
         "variant": "cpp",
         "hash_map": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "typeindex": "cpp"
     }
 }

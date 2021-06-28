@@ -29,6 +29,7 @@ public:
 
     float reflectivity = 0.2f, shineDamper = 15.f;
     inline const TRTexture * const getNormalMap() const { return normalMap; }
+    inline const TRTexture * const getDisplacementMap() const { return butterflies.displacement; }
 private:
     const FFTCtx ctx;
     FreqDomain freqdomain;

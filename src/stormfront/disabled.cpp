@@ -1,3 +1,6 @@
+
+// this main file is disable as of now
+#if 0
 #include "TR/TRDisplayManager.h"
 #include "TR/TRKeyboard.h"
 #include "TR/TesseractEngine.h"
@@ -105,3 +108,5 @@ int main(void) {
 
     return 0;
 }
+
+#endif

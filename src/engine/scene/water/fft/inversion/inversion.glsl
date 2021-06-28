@@ -17,6 +17,7 @@ void main(void) {
 
 	int index = int(mod((int(loc.x + loc.y)), 2));
 	float perm = perms[index];
+    perm = 1.0;
 
     float dy = imageLoad(src, loc).r;
     vec4 tmp = imageLoad(chop_src, loc);

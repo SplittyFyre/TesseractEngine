@@ -1,4 +1,220 @@
 all: bin/ExecuteMe
+obj/main.o: src/demo/main.cpp headers/TR/TRDisplayManager.h \
+ include/GL/glew.h include/GL/glu.h include/GL/gl.h include/GLFW/glfw3.h \
+ headers/TR/TRKeyboard.h headers/TR/TesseractEngine.h \
+ headers/TR/DefferedRenderSystem.h include/glm/glm.hpp \
+ include/glm/detail/_fixes.hpp include/glm/detail/setup.hpp \
+ include/glm/detail/../simd/platform.h include/glm/fwd.hpp \
+ include/glm/detail/qualifier.hpp include/glm/detail/setup.hpp \
+ include/glm/vec2.hpp include/glm/./ext/vector_bool2.hpp \
+ include/glm/./ext/../detail/type_vec2.hpp \
+ include/glm/./ext/../detail/type_vec2.inl \
+ include/glm/./ext/../detail/./compute_vector_relational.hpp \
+ include/glm/./ext/../detail/./setup.hpp \
+ include/glm/./ext/vector_bool2_precision.hpp \
+ include/glm/./ext/vector_float2.hpp \
+ include/glm/./ext/vector_float2_precision.hpp \
+ include/glm/./ext/vector_double2.hpp \
+ include/glm/./ext/vector_double2_precision.hpp \
+ include/glm/./ext/vector_int2.hpp \
+ include/glm/./ext/vector_int2_precision.hpp \
+ include/glm/./ext/vector_uint2.hpp \
+ include/glm/./ext/vector_uint2_precision.hpp include/glm/vec3.hpp \
+ include/glm/./ext/vector_bool3.hpp \
+ include/glm/./ext/../detail/type_vec3.hpp \
+ include/glm/./ext/../detail/type_vec3.inl \
+ include/glm/./ext/vector_bool3_precision.hpp \
+ include/glm/./ext/vector_float3.hpp \
+ include/glm/./ext/vector_float3_precision.hpp \
+ include/glm/./ext/vector_double3.hpp \
+ include/glm/./ext/vector_double3_precision.hpp \
+ include/glm/./ext/vector_int3.hpp \
+ include/glm/./ext/vector_int3_precision.hpp \
+ include/glm/./ext/vector_uint3.hpp \
+ include/glm/./ext/vector_uint3_precision.hpp include/glm/vec4.hpp \
+ include/glm/./ext/vector_bool4.hpp \
+ include/glm/./ext/../detail/type_vec4.hpp \
+ include/glm/./ext/../detail/type_vec4.inl \
+ include/glm/./ext/vector_bool4_precision.hpp \
+ include/glm/./ext/vector_float4.hpp \
+ include/glm/./ext/vector_float4_precision.hpp \
+ include/glm/./ext/vector_double4.hpp \
+ include/glm/./ext/vector_double4_precision.hpp \
+ include/glm/./ext/../detail/setup.hpp include/glm/./ext/vector_int4.hpp \
+ include/glm/./ext/vector_int4_precision.hpp \
+ include/glm/./ext/vector_uint4.hpp \
+ include/glm/./ext/vector_uint4_precision.hpp include/glm/mat2x2.hpp \
+ include/glm/./ext/matrix_double2x2.hpp \
+ include/glm/./ext/../detail/type_mat2x2.hpp \
+ include/glm/./ext/../detail/type_mat2x2.inl \
+ include/glm/./ext/../detail/../matrix.hpp \
+ include/glm/./ext/../detail/../detail/setup.hpp \
+ include/glm/./ext/../detail/../mat2x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
+ include/glm/./ext/../detail/../mat2x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
+ include/glm/./ext/../detail/../mat3x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
+ include/glm/./ext/../detail/../mat3x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
+ include/glm/./ext/../detail/../mat3x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
+ include/glm/./ext/../detail/../mat4x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
+ include/glm/./ext/../detail/../mat4x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
+ include/glm/./ext/../detail/../mat4x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
+ include/glm/./ext/../detail/../detail/func_matrix.inl \
+ include/glm/./ext/../detail/../detail/../geometric.hpp \
+ include/glm/./ext/../detail/../detail/../detail/func_geometric.inl \
+ include/glm/./ext/../detail/../detail/../detail/../exponential.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/func_exponential.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../vector_relational.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../detail/setup.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../detail/func_vector_relational.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/_vectorize.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../common.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/_fixes.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/func_common.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/compute_common.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/setup.hpp \
+ include/glm/./ext/matrix_double2x2_precision.hpp \
+ include/glm/./ext/matrix_float2x2.hpp \
+ include/glm/./ext/matrix_float2x2_precision.hpp \
+ include/glm/trigonometric.hpp include/glm/detail/func_trigonometric.inl \
+ include/glm/packing.hpp include/glm/detail/func_packing.inl \
+ include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
+ include/glm/integer.hpp include/glm/detail/func_integer.inl \
+ headers/TR/TRScene.h headers/TR/TRCamera.h include/glm/gtx/transform.hpp \
+ include/glm/gtx/../gtc/matrix_transform.hpp \
+ include/glm/gtx/../gtc/../ext/matrix_projection.hpp \
+ include/glm/gtx/../gtc/../ext/../gtc/constants.hpp \
+ include/glm/gtx/../gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+ include/glm/gtx/../gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+ include/glm/gtx/../gtc/../ext/../gtc/../ext/scalar_constants.inl \
+ include/glm/gtx/../gtc/../ext/../gtc/constants.inl \
+ include/glm/gtx/../gtc/../ext/matrix_projection.inl \
+ include/glm/gtx/../gtc/../ext/matrix_clip_space.hpp \
+ include/glm/gtx/../gtc/../ext/matrix_clip_space.inl \
+ include/glm/gtx/../gtc/../ext/matrix_transform.hpp \
+ include/glm/gtx/../gtc/../ext/matrix_transform.inl \
+ include/glm/gtx/../gtc/matrix_transform.inl \
+ include/glm/gtx/transform.inl headers/TR/TRTerrain.h \
+ headers/TR/TRLoader.h headers/TR/RawModel.h headers/TR/BoundingVolume.h \
+ headers/TR/MeshData.h headers/TR/TRTexture.h headers/TR/TRHeightmap.h \
+ headers/TR/TRFbo.h headers/TR/GLQuery.h headers/TR/TRSkybox.h \
+ headers/TR/ParticleManager.h headers/TR/TRParticle.h \
+ headers/TR/TRPlasticWater.h headers/TR/FFTWater.h headers/TR/FFTCtx.h \
+ headers/TR/FreqDomain.h headers/TR/FFTPreComp.h headers/TR/FreqShader.h \
+ headers/TR/ShaderProgram.h include/glm/gtc/type_ptr.hpp \
+ include/glm/gtc/../gtc/quaternion.hpp \
+ include/glm/gtc/../gtc/../ext/vector_relational.hpp \
+ include/glm/gtc/../gtc/../ext/vector_relational.inl \
+ include/glm/gtc/../gtc/../ext/../detail/type_float.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/setup.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_common.hpp \
+ include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
+ include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_common.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_float.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ include/glm/gtc/../gtc/../ext/../detail/type_quat.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_double.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_transform.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_transform.inl \
+ include/glm/gtc/../gtc/quaternion.inl include/glm/gtc/../gtc/epsilon.hpp \
+ include/glm/gtc/../gtc/../detail/setup.hpp \
+ include/glm/gtc/../gtc/epsilon.inl include/glm/gtc/../gtc/vec1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_bool1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_float1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_double1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_int1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_int1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_uint1_precision.hpp \
+ include/glm/gtc/type_ptr.inl headers/TR/Butterflies.h \
+ headers/TR/ButterflyShader.h headers/TR/InversionShader.h \
+ headers/TR/WaterNormals.h headers/TR/TRLensFlare.h \
+ headers/TR/GroupEntity.h headers/TR/TRSceneEntity.h \
+ headers/TR/TexturedModel.h headers/TR/ModelSkin.h \
+ headers/TR/TRStaticBatch.h headers/TR/DefrEntityRenderer.h \
+ headers/TR/DefrEntityShader.h headers/TR/InstancedEntityShader.h \
+ headers/TR/StaticEntityRenderer.h headers/TR/DefrTerrainRenderer.h \
+ headers/TR/DefrTerrainShader.h headers/TR/DefrSkyboxRenderer.h \
+ headers/TR/DefrSkyboxShader.h headers/TR/PlasticWaterRenderer.h \
+ headers/TR/PlasticWaterShader.h headers/TR/FFTWaterRenderer.h \
+ headers/TR/FFTWaterShader.h headers/TR/SunRenderer.h \
+ headers/TR/SunShader.h headers/TR/DefferedProcessing.h \
+ headers/TR/DefferedShader.h headers/TR/DefferedProcessingW.h \
+ headers/TR/DefferedShaderW.h headers/TR/TRDisplayManager.h \
+ headers/TR/TRFbo.h headers/TR/ParticleRenderer.h \
+ headers/TR/ParticleShader.h headers/TR/GaussianBlur.h \
+ headers/TR/BlurShader.h headers/TR/BloomCombiner.h \
+ headers/TR/BloomShader.h headers/TR/FXAA.h headers/TR/FXAAShader.h \
+ headers/TR/FlareRenderer.h headers/TR/FlareShader.h \
+ headers/TR/FlareQueryShader.h headers/TR/CurtainRenderer.h \
+ headers/TR/CurtainShader.h headers/TP/ThreadPool.hpp \
+ headers/TR/RogueCamera.h headers/TR/OBJParser.h \
+ headers/TR/SimpleGeometry.h headers/TR/TRSpatialEntity.h \
+ headers/TR/TRMath.h headers/TR/DynamicBounds.h include/imgui/imgui.h \
+ include/imgui/imconfig.h
+
+	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/demo/main.cpp -o obj/main.o
+obj/dragon.o: src/demo/dragon.cpp
+
+	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/demo/dragon.cpp -o obj/dragon.o
 obj/TRMath.o: src/engine/util/TRMath.cpp headers/TR/TRMath.h \
  include/glm/gtx/transform.hpp include/glm/gtx/../glm.hpp \
  include/glm/gtx/../detail/_fixes.hpp include/glm/gtx/../detail/setup.hpp \
@@ -979,6 +1195,7 @@ obj/TesseractEngine.o: src/engine/renderEngine/TesseractEngine.cpp \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -2273,6 +2490,7 @@ obj/DefferedRenderSystem.o: \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/TesseractEngine.h headers/TR/DefferedRenderSystem.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -2482,6 +2700,7 @@ obj/DefrSkyboxRenderer.o: \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -2873,6 +3092,7 @@ obj/ParticleRenderer.o: \
  headers/TR/TRDisplayManager.h include/GLFW/glfw3.h \
  headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/GaussianBlur.h \
  headers/TR/BlurShader.h headers/TR/BloomCombiner.h \
@@ -3440,6 +3660,7 @@ obj/DefrTerrainRenderer.o: \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -4567,6 +4788,7 @@ obj/DefrEntityRenderer.o: \
  headers/TR/TRDisplayManager.h include/GLFW/glfw3.h \
  headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -4955,6 +5177,7 @@ obj/StaticEntityRenderer.o: \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -5164,6 +5387,7 @@ obj/PlasticWaterRenderer.o: \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -6515,6 +6739,410 @@ obj/BloomShader.o: src/engine/post/bloom/shader/BloomShader.cpp \
  include/glm/gtc/type_ptr.inl
 
 	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/engine/post/bloom/shader/BloomShader.cpp -o obj/BloomShader.o
+obj/DefferedProcessingW.o: \
+ src/engine/post/deffered_water/DefferedProcessingW.cpp \
+ headers/TR/DefferedProcessingW.h headers/TR/TRScene.h \
+ include/glm/glm.hpp include/glm/detail/_fixes.hpp \
+ include/glm/detail/setup.hpp include/glm/detail/../simd/platform.h \
+ include/glm/fwd.hpp include/glm/detail/qualifier.hpp \
+ include/glm/detail/setup.hpp include/glm/vec2.hpp \
+ include/glm/./ext/vector_bool2.hpp \
+ include/glm/./ext/../detail/type_vec2.hpp \
+ include/glm/./ext/../detail/type_vec2.inl \
+ include/glm/./ext/../detail/./compute_vector_relational.hpp \
+ include/glm/./ext/../detail/./setup.hpp \
+ include/glm/./ext/vector_bool2_precision.hpp \
+ include/glm/./ext/vector_float2.hpp \
+ include/glm/./ext/vector_float2_precision.hpp \
+ include/glm/./ext/vector_double2.hpp \
+ include/glm/./ext/vector_double2_precision.hpp \
+ include/glm/./ext/vector_int2.hpp \
+ include/glm/./ext/vector_int2_precision.hpp \
+ include/glm/./ext/vector_uint2.hpp \
+ include/glm/./ext/vector_uint2_precision.hpp include/glm/vec3.hpp \
+ include/glm/./ext/vector_bool3.hpp \
+ include/glm/./ext/../detail/type_vec3.hpp \
+ include/glm/./ext/../detail/type_vec3.inl \
+ include/glm/./ext/vector_bool3_precision.hpp \
+ include/glm/./ext/vector_float3.hpp \
+ include/glm/./ext/vector_float3_precision.hpp \
+ include/glm/./ext/vector_double3.hpp \
+ include/glm/./ext/vector_double3_precision.hpp \
+ include/glm/./ext/vector_int3.hpp \
+ include/glm/./ext/vector_int3_precision.hpp \
+ include/glm/./ext/vector_uint3.hpp \
+ include/glm/./ext/vector_uint3_precision.hpp include/glm/vec4.hpp \
+ include/glm/./ext/vector_bool4.hpp \
+ include/glm/./ext/../detail/type_vec4.hpp \
+ include/glm/./ext/../detail/type_vec4.inl \
+ include/glm/./ext/vector_bool4_precision.hpp \
+ include/glm/./ext/vector_float4.hpp \
+ include/glm/./ext/vector_float4_precision.hpp \
+ include/glm/./ext/vector_double4.hpp \
+ include/glm/./ext/vector_double4_precision.hpp \
+ include/glm/./ext/../detail/setup.hpp include/glm/./ext/vector_int4.hpp \
+ include/glm/./ext/vector_int4_precision.hpp \
+ include/glm/./ext/vector_uint4.hpp \
+ include/glm/./ext/vector_uint4_precision.hpp include/glm/mat2x2.hpp \
+ include/glm/./ext/matrix_double2x2.hpp \
+ include/glm/./ext/../detail/type_mat2x2.hpp \
+ include/glm/./ext/../detail/type_mat2x2.inl \
+ include/glm/./ext/../detail/../matrix.hpp \
+ include/glm/./ext/../detail/../detail/setup.hpp \
+ include/glm/./ext/../detail/../mat2x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
+ include/glm/./ext/../detail/../mat2x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
+ include/glm/./ext/../detail/../mat3x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
+ include/glm/./ext/../detail/../mat3x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
+ include/glm/./ext/../detail/../mat3x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
+ include/glm/./ext/../detail/../mat4x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
+ include/glm/./ext/../detail/../mat4x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
+ include/glm/./ext/../detail/../mat4x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
+ include/glm/./ext/../detail/../detail/func_matrix.inl \
+ include/glm/./ext/../detail/../detail/../geometric.hpp \
+ include/glm/./ext/../detail/../detail/../detail/func_geometric.inl \
+ include/glm/./ext/../detail/../detail/../detail/../exponential.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/func_exponential.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../vector_relational.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../detail/setup.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../detail/func_vector_relational.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/_vectorize.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../common.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/_fixes.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/func_common.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/compute_common.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/setup.hpp \
+ include/glm/./ext/matrix_double2x2_precision.hpp \
+ include/glm/./ext/matrix_float2x2.hpp \
+ include/glm/./ext/matrix_float2x2_precision.hpp \
+ include/glm/trigonometric.hpp include/glm/detail/func_trigonometric.inl \
+ include/glm/packing.hpp include/glm/detail/func_packing.inl \
+ include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
+ include/glm/integer.hpp include/glm/detail/func_integer.inl \
+ headers/TR/TRCamera.h include/glm/gtx/transform.hpp \
+ include/glm/gtx/../gtc/matrix_transform.hpp \
+ include/glm/gtx/../gtc/../ext/matrix_projection.hpp \
+ include/glm/gtx/../gtc/../ext/../gtc/constants.hpp \
+ include/glm/gtx/../gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+ include/glm/gtx/../gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+ include/glm/gtx/../gtc/../ext/../gtc/../ext/scalar_constants.inl \
+ include/glm/gtx/../gtc/../ext/../gtc/constants.inl \
+ include/glm/gtx/../gtc/../ext/matrix_projection.inl \
+ include/glm/gtx/../gtc/../ext/matrix_clip_space.hpp \
+ include/glm/gtx/../gtc/../ext/matrix_clip_space.inl \
+ include/glm/gtx/../gtc/../ext/matrix_transform.hpp \
+ include/glm/gtx/../gtc/../ext/matrix_transform.inl \
+ include/glm/gtx/../gtc/matrix_transform.inl \
+ include/glm/gtx/transform.inl headers/TR/TRTerrain.h \
+ headers/TR/TRLoader.h include/GL/glew.h include/GL/glu.h include/GL/gl.h \
+ headers/TR/RawModel.h headers/TR/BoundingVolume.h headers/TR/MeshData.h \
+ headers/TR/TRTexture.h headers/TR/TRHeightmap.h headers/TR/TRFbo.h \
+ headers/TR/GLQuery.h headers/TR/TRSkybox.h headers/TR/ParticleManager.h \
+ headers/TR/TRParticle.h headers/TR/TRPlasticWater.h \
+ headers/TR/FFTWater.h headers/TR/FFTCtx.h headers/TR/FreqDomain.h \
+ headers/TR/FFTPreComp.h headers/TR/FreqShader.h \
+ headers/TR/ShaderProgram.h include/glm/gtc/type_ptr.hpp \
+ include/glm/gtc/../gtc/quaternion.hpp \
+ include/glm/gtc/../gtc/../ext/vector_relational.hpp \
+ include/glm/gtc/../gtc/../ext/vector_relational.inl \
+ include/glm/gtc/../gtc/../ext/../detail/type_float.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/setup.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_common.hpp \
+ include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
+ include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_common.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_float.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ include/glm/gtc/../gtc/../ext/../detail/type_quat.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_double.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_transform.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_transform.inl \
+ include/glm/gtc/../gtc/quaternion.inl include/glm/gtc/../gtc/epsilon.hpp \
+ include/glm/gtc/../gtc/../detail/setup.hpp \
+ include/glm/gtc/../gtc/epsilon.inl include/glm/gtc/../gtc/vec1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_bool1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_float1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_double1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_int1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_int1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_uint1_precision.hpp \
+ include/glm/gtc/type_ptr.inl headers/TR/Butterflies.h \
+ headers/TR/ButterflyShader.h headers/TR/InversionShader.h \
+ headers/TR/WaterNormals.h headers/TR/TRLensFlare.h \
+ headers/TR/GroupEntity.h headers/TR/TRSceneEntity.h \
+ headers/TR/TexturedModel.h headers/TR/ModelSkin.h \
+ headers/TR/TRStaticBatch.h headers/TR/DefferedShaderW.h \
+ headers/TR/TesseractEngine.h headers/TR/DefferedRenderSystem.h \
+ headers/TR/DefrEntityRenderer.h headers/TR/DefrEntityShader.h \
+ headers/TR/InstancedEntityShader.h headers/TR/StaticEntityRenderer.h \
+ headers/TR/DefrTerrainRenderer.h headers/TR/DefrTerrainShader.h \
+ headers/TR/DefrSkyboxRenderer.h headers/TR/DefrSkyboxShader.h \
+ headers/TR/PlasticWaterRenderer.h headers/TR/PlasticWaterShader.h \
+ headers/TR/FFTWaterRenderer.h headers/TR/FFTWaterShader.h \
+ headers/TR/TRDisplayManager.h include/GLFW/glfw3.h \
+ headers/TR/SunRenderer.h headers/TR/SunShader.h \
+ headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/TRDisplayManager.h \
+ headers/TR/TRFbo.h headers/TR/ParticleRenderer.h \
+ headers/TR/ParticleShader.h headers/TR/GaussianBlur.h \
+ headers/TR/BlurShader.h headers/TR/BloomCombiner.h \
+ headers/TR/BloomShader.h headers/TR/FXAA.h headers/TR/FXAAShader.h \
+ headers/TR/FlareRenderer.h headers/TR/FlareShader.h \
+ headers/TR/FlareQueryShader.h headers/TR/CurtainRenderer.h \
+ headers/TR/CurtainShader.h headers/TP/ThreadPool.hpp
+
+	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/engine/post/deffered_water/DefferedProcessingW.cpp -o obj/DefferedProcessingW.o
+obj/DefferedShaderW.o: \
+ src/engine/post/deffered_water/shader/DefferedShaderW.cpp \
+ headers/TR/DefferedShaderW.h headers/TR/ShaderProgram.h \
+ include/GL/glew.h include/GL/glu.h include/GL/gl.h include/glm/glm.hpp \
+ include/glm/detail/_fixes.hpp include/glm/detail/setup.hpp \
+ include/glm/detail/../simd/platform.h include/glm/fwd.hpp \
+ include/glm/detail/qualifier.hpp include/glm/detail/setup.hpp \
+ include/glm/vec2.hpp include/glm/./ext/vector_bool2.hpp \
+ include/glm/./ext/../detail/type_vec2.hpp \
+ include/glm/./ext/../detail/type_vec2.inl \
+ include/glm/./ext/../detail/./compute_vector_relational.hpp \
+ include/glm/./ext/../detail/./setup.hpp \
+ include/glm/./ext/vector_bool2_precision.hpp \
+ include/glm/./ext/vector_float2.hpp \
+ include/glm/./ext/vector_float2_precision.hpp \
+ include/glm/./ext/vector_double2.hpp \
+ include/glm/./ext/vector_double2_precision.hpp \
+ include/glm/./ext/vector_int2.hpp \
+ include/glm/./ext/vector_int2_precision.hpp \
+ include/glm/./ext/vector_uint2.hpp \
+ include/glm/./ext/vector_uint2_precision.hpp include/glm/vec3.hpp \
+ include/glm/./ext/vector_bool3.hpp \
+ include/glm/./ext/../detail/type_vec3.hpp \
+ include/glm/./ext/../detail/type_vec3.inl \
+ include/glm/./ext/vector_bool3_precision.hpp \
+ include/glm/./ext/vector_float3.hpp \
+ include/glm/./ext/vector_float3_precision.hpp \
+ include/glm/./ext/vector_double3.hpp \
+ include/glm/./ext/vector_double3_precision.hpp \
+ include/glm/./ext/vector_int3.hpp \
+ include/glm/./ext/vector_int3_precision.hpp \
+ include/glm/./ext/vector_uint3.hpp \
+ include/glm/./ext/vector_uint3_precision.hpp include/glm/vec4.hpp \
+ include/glm/./ext/vector_bool4.hpp \
+ include/glm/./ext/../detail/type_vec4.hpp \
+ include/glm/./ext/../detail/type_vec4.inl \
+ include/glm/./ext/vector_bool4_precision.hpp \
+ include/glm/./ext/vector_float4.hpp \
+ include/glm/./ext/vector_float4_precision.hpp \
+ include/glm/./ext/vector_double4.hpp \
+ include/glm/./ext/vector_double4_precision.hpp \
+ include/glm/./ext/../detail/setup.hpp include/glm/./ext/vector_int4.hpp \
+ include/glm/./ext/vector_int4_precision.hpp \
+ include/glm/./ext/vector_uint4.hpp \
+ include/glm/./ext/vector_uint4_precision.hpp include/glm/mat2x2.hpp \
+ include/glm/./ext/matrix_double2x2.hpp \
+ include/glm/./ext/../detail/type_mat2x2.hpp \
+ include/glm/./ext/../detail/type_mat2x2.inl \
+ include/glm/./ext/../detail/../matrix.hpp \
+ include/glm/./ext/../detail/../detail/setup.hpp \
+ include/glm/./ext/../detail/../mat2x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
+ include/glm/./ext/../detail/../mat2x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
+ include/glm/./ext/../detail/../mat3x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
+ include/glm/./ext/../detail/../mat3x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
+ include/glm/./ext/../detail/../mat3x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
+ include/glm/./ext/../detail/../mat4x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
+ include/glm/./ext/../detail/../mat4x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
+ include/glm/./ext/../detail/../mat4x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
+ include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
+ include/glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
+ include/glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
+ include/glm/./ext/../detail/../detail/func_matrix.inl \
+ include/glm/./ext/../detail/../detail/../geometric.hpp \
+ include/glm/./ext/../detail/../detail/../detail/func_geometric.inl \
+ include/glm/./ext/../detail/../detail/../detail/../exponential.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/func_exponential.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../vector_relational.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../detail/setup.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/../detail/func_vector_relational.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/_vectorize.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../common.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/_fixes.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/func_common.inl \
+ include/glm/./ext/../detail/../detail/../detail/../detail/compute_common.hpp \
+ include/glm/./ext/../detail/../detail/../detail/../detail/setup.hpp \
+ include/glm/./ext/matrix_double2x2_precision.hpp \
+ include/glm/./ext/matrix_float2x2.hpp \
+ include/glm/./ext/matrix_float2x2_precision.hpp \
+ include/glm/trigonometric.hpp include/glm/detail/func_trigonometric.inl \
+ include/glm/packing.hpp include/glm/detail/func_packing.inl \
+ include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
+ include/glm/integer.hpp include/glm/detail/func_integer.inl \
+ include/glm/gtc/type_ptr.hpp include/glm/gtc/../gtc/quaternion.hpp \
+ include/glm/gtc/../gtc/../gtc/constants.hpp \
+ include/glm/gtc/../gtc/../gtc/../ext/scalar_constants.hpp \
+ include/glm/gtc/../gtc/../gtc/../ext/../detail/setup.hpp \
+ include/glm/gtc/../gtc/../gtc/../ext/scalar_constants.inl \
+ include/glm/gtc/../gtc/../gtc/constants.inl \
+ include/glm/gtc/../gtc/../gtc/matrix_transform.hpp \
+ include/glm/gtc/../gtc/../gtc/../ext/matrix_projection.hpp \
+ include/glm/gtc/../gtc/../gtc/../ext/matrix_projection.inl \
+ include/glm/gtc/../gtc/../gtc/../ext/matrix_clip_space.hpp \
+ include/glm/gtc/../gtc/../gtc/../ext/matrix_clip_space.inl \
+ include/glm/gtc/../gtc/../gtc/../ext/matrix_transform.hpp \
+ include/glm/gtc/../gtc/../gtc/../ext/matrix_transform.inl \
+ include/glm/gtc/../gtc/../gtc/matrix_transform.inl \
+ include/glm/gtc/../gtc/../ext/vector_relational.hpp \
+ include/glm/gtc/../gtc/../ext/vector_relational.inl \
+ include/glm/gtc/../gtc/../ext/../detail/type_float.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/setup.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_common.hpp \
+ include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
+ include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_common.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_float.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
+ include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
+ include/glm/gtc/../gtc/../ext/../detail/type_quat.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_double.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
+ include/glm/gtc/../gtc/../ext/quaternion_transform.hpp \
+ include/glm/gtc/../gtc/../ext/quaternion_transform.inl \
+ include/glm/gtc/../gtc/quaternion.inl include/glm/gtc/../gtc/epsilon.hpp \
+ include/glm/gtc/../gtc/../detail/setup.hpp \
+ include/glm/gtc/../gtc/epsilon.inl include/glm/gtc/../gtc/vec1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_bool1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_float1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_double1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_int1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_int1_precision.hpp \
+ include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
+ include/glm/gtc/../gtc/../ext/vector_uint1_precision.hpp \
+ include/glm/gtc/type_ptr.inl headers/TR/TRScene.h headers/TR/TRCamera.h \
+ include/glm/gtx/transform.hpp include/glm/gtx/transform.inl \
+ headers/TR/TRTerrain.h headers/TR/TRLoader.h headers/TR/RawModel.h \
+ headers/TR/BoundingVolume.h headers/TR/MeshData.h headers/TR/TRTexture.h \
+ headers/TR/TRHeightmap.h headers/TR/TRFbo.h headers/TR/GLQuery.h \
+ headers/TR/TRSkybox.h headers/TR/ParticleManager.h \
+ headers/TR/TRParticle.h headers/TR/TRPlasticWater.h \
+ headers/TR/FFTWater.h headers/TR/FFTCtx.h headers/TR/FreqDomain.h \
+ headers/TR/FFTPreComp.h headers/TR/FreqShader.h headers/TR/Butterflies.h \
+ headers/TR/ButterflyShader.h headers/TR/InversionShader.h \
+ headers/TR/WaterNormals.h headers/TR/TRLensFlare.h \
+ headers/TR/GroupEntity.h headers/TR/TRSceneEntity.h \
+ headers/TR/TexturedModel.h headers/TR/ModelSkin.h \
+ headers/TR/TRStaticBatch.h
+
+	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/engine/post/deffered_water/shader/DefferedShaderW.cpp -o obj/DefferedShaderW.o
 obj/DefferedProcessing.o: src/engine/post/deffered/DefferedProcessing.cpp \
  headers/TR/DefferedProcessing.h headers/TR/RawModel.h include/GL/glew.h \
  include/GL/glu.h include/GL/gl.h headers/TR/BoundingVolume.h \
@@ -6715,7 +7343,8 @@ obj/DefferedProcessing.o: src/engine/post/deffered/DefferedProcessing.cpp \
  headers/TR/FFTWaterRenderer.h headers/TR/FFTWaterShader.h \
  headers/TR/TRDisplayManager.h include/GLFW/glfw3.h \
  headers/TR/SunRenderer.h headers/TR/SunShader.h \
- headers/TR/DefferedProcessing.h headers/TR/TRDisplayManager.h \
+ headers/TR/DefferedProcessing.h headers/TR/DefferedProcessingW.h \
+ headers/TR/DefferedShaderW.h headers/TR/TRDisplayManager.h \
  headers/TR/TRFbo.h headers/TR/ParticleRenderer.h \
  headers/TR/ParticleShader.h headers/TR/GaussianBlur.h \
  headers/TR/BlurShader.h headers/TR/BloomCombiner.h \
@@ -11089,225 +11718,9 @@ obj/TRStaticBatch.o: src/engine/scene/entities/static/TRStaticBatch.cpp \
  include/glm/gtc/type_ptr.inl
 
 	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/engine/scene/entities/static/TRStaticBatch.cpp -o obj/TRStaticBatch.o
-obj/main.o: src/stormfront/main.cpp headers/TR/TRDisplayManager.h \
- include/GL/glew.h include/GL/glu.h include/GL/gl.h include/GLFW/glfw3.h \
- headers/TR/TRKeyboard.h headers/TR/TesseractEngine.h \
- headers/TR/DefferedRenderSystem.h include/glm/glm.hpp \
- include/glm/detail/_fixes.hpp include/glm/detail/setup.hpp \
- include/glm/detail/../simd/platform.h include/glm/fwd.hpp \
- include/glm/detail/qualifier.hpp include/glm/detail/setup.hpp \
- include/glm/vec2.hpp include/glm/./ext/vector_bool2.hpp \
- include/glm/./ext/../detail/type_vec2.hpp \
- include/glm/./ext/../detail/type_vec2.inl \
- include/glm/./ext/../detail/./compute_vector_relational.hpp \
- include/glm/./ext/../detail/./setup.hpp \
- include/glm/./ext/vector_bool2_precision.hpp \
- include/glm/./ext/vector_float2.hpp \
- include/glm/./ext/vector_float2_precision.hpp \
- include/glm/./ext/vector_double2.hpp \
- include/glm/./ext/vector_double2_precision.hpp \
- include/glm/./ext/vector_int2.hpp \
- include/glm/./ext/vector_int2_precision.hpp \
- include/glm/./ext/vector_uint2.hpp \
- include/glm/./ext/vector_uint2_precision.hpp include/glm/vec3.hpp \
- include/glm/./ext/vector_bool3.hpp \
- include/glm/./ext/../detail/type_vec3.hpp \
- include/glm/./ext/../detail/type_vec3.inl \
- include/glm/./ext/vector_bool3_precision.hpp \
- include/glm/./ext/vector_float3.hpp \
- include/glm/./ext/vector_float3_precision.hpp \
- include/glm/./ext/vector_double3.hpp \
- include/glm/./ext/vector_double3_precision.hpp \
- include/glm/./ext/vector_int3.hpp \
- include/glm/./ext/vector_int3_precision.hpp \
- include/glm/./ext/vector_uint3.hpp \
- include/glm/./ext/vector_uint3_precision.hpp include/glm/vec4.hpp \
- include/glm/./ext/vector_bool4.hpp \
- include/glm/./ext/../detail/type_vec4.hpp \
- include/glm/./ext/../detail/type_vec4.inl \
- include/glm/./ext/vector_bool4_precision.hpp \
- include/glm/./ext/vector_float4.hpp \
- include/glm/./ext/vector_float4_precision.hpp \
- include/glm/./ext/vector_double4.hpp \
- include/glm/./ext/vector_double4_precision.hpp \
- include/glm/./ext/../detail/setup.hpp include/glm/./ext/vector_int4.hpp \
- include/glm/./ext/vector_int4_precision.hpp \
- include/glm/./ext/vector_uint4.hpp \
- include/glm/./ext/vector_uint4_precision.hpp include/glm/mat2x2.hpp \
- include/glm/./ext/matrix_double2x2.hpp \
- include/glm/./ext/../detail/type_mat2x2.hpp \
- include/glm/./ext/../detail/type_mat2x2.inl \
- include/glm/./ext/../detail/../matrix.hpp \
- include/glm/./ext/../detail/../detail/setup.hpp \
- include/glm/./ext/../detail/../mat2x3.hpp \
- include/glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
- include/glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
- include/glm/./ext/../detail/../mat2x4.hpp \
- include/glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
- include/glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
- include/glm/./ext/../detail/../mat3x2.hpp \
- include/glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
- include/glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
- include/glm/./ext/../detail/../mat3x3.hpp \
- include/glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
- include/glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
- include/glm/./ext/../detail/../mat3x4.hpp \
- include/glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
- include/glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
- include/glm/./ext/../detail/../mat4x2.hpp \
- include/glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
- include/glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
- include/glm/./ext/../detail/../mat4x3.hpp \
- include/glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
- include/glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
- include/glm/./ext/../detail/../mat4x4.hpp \
- include/glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
- include/glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
- include/glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
- include/glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
- include/glm/./ext/../detail/../detail/func_matrix.inl \
- include/glm/./ext/../detail/../detail/../geometric.hpp \
- include/glm/./ext/../detail/../detail/../detail/func_geometric.inl \
- include/glm/./ext/../detail/../detail/../detail/../exponential.hpp \
- include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.hpp \
- include/glm/./ext/../detail/../detail/../detail/../detail/type_vec1.inl \
- include/glm/./ext/../detail/../detail/../detail/../detail/func_exponential.inl \
- include/glm/./ext/../detail/../detail/../detail/../detail/../vector_relational.hpp \
- include/glm/./ext/../detail/../detail/../detail/../detail/../detail/setup.hpp \
- include/glm/./ext/../detail/../detail/../detail/../detail/../detail/func_vector_relational.inl \
- include/glm/./ext/../detail/../detail/../detail/../detail/_vectorize.hpp \
- include/glm/./ext/../detail/../detail/../detail/../common.hpp \
- include/glm/./ext/../detail/../detail/../detail/../detail/_fixes.hpp \
- include/glm/./ext/../detail/../detail/../detail/../detail/func_common.inl \
- include/glm/./ext/../detail/../detail/../detail/../detail/compute_common.hpp \
- include/glm/./ext/../detail/../detail/../detail/../detail/setup.hpp \
- include/glm/./ext/matrix_double2x2_precision.hpp \
- include/glm/./ext/matrix_float2x2.hpp \
- include/glm/./ext/matrix_float2x2_precision.hpp \
- include/glm/trigonometric.hpp include/glm/detail/func_trigonometric.inl \
- include/glm/packing.hpp include/glm/detail/func_packing.inl \
- include/glm/detail/type_half.hpp include/glm/detail/type_half.inl \
- include/glm/integer.hpp include/glm/detail/func_integer.inl \
- headers/TR/TRScene.h headers/TR/TRCamera.h include/glm/gtx/transform.hpp \
- include/glm/gtx/../gtc/matrix_transform.hpp \
- include/glm/gtx/../gtc/../ext/matrix_projection.hpp \
- include/glm/gtx/../gtc/../ext/../gtc/constants.hpp \
- include/glm/gtx/../gtc/../ext/../gtc/../ext/scalar_constants.hpp \
- include/glm/gtx/../gtc/../ext/../gtc/../ext/../detail/setup.hpp \
- include/glm/gtx/../gtc/../ext/../gtc/../ext/scalar_constants.inl \
- include/glm/gtx/../gtc/../ext/../gtc/constants.inl \
- include/glm/gtx/../gtc/../ext/matrix_projection.inl \
- include/glm/gtx/../gtc/../ext/matrix_clip_space.hpp \
- include/glm/gtx/../gtc/../ext/matrix_clip_space.inl \
- include/glm/gtx/../gtc/../ext/matrix_transform.hpp \
- include/glm/gtx/../gtc/../ext/matrix_transform.inl \
- include/glm/gtx/../gtc/matrix_transform.inl \
- include/glm/gtx/transform.inl headers/TR/TRTerrain.h \
- headers/TR/TRLoader.h headers/TR/RawModel.h headers/TR/BoundingVolume.h \
- headers/TR/MeshData.h headers/TR/TRTexture.h headers/TR/TRHeightmap.h \
- headers/TR/TRFbo.h headers/TR/GLQuery.h headers/TR/TRSkybox.h \
- headers/TR/ParticleManager.h headers/TR/TRParticle.h \
- headers/TR/TRPlasticWater.h headers/TR/FFTWater.h headers/TR/FFTCtx.h \
- headers/TR/FreqDomain.h headers/TR/FFTPreComp.h headers/TR/FreqShader.h \
- headers/TR/ShaderProgram.h include/glm/gtc/type_ptr.hpp \
- include/glm/gtc/../gtc/quaternion.hpp \
- include/glm/gtc/../gtc/../ext/vector_relational.hpp \
- include/glm/gtc/../gtc/../ext/vector_relational.inl \
- include/glm/gtc/../gtc/../ext/../detail/type_float.hpp \
- include/glm/gtc/../gtc/../ext/../detail/setup.hpp \
- include/glm/gtc/../gtc/../ext/quaternion_common.hpp \
- include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.hpp \
- include/glm/gtc/../gtc/../ext/../ext/quaternion_geometric.inl \
- include/glm/gtc/../gtc/../ext/quaternion_common.inl \
- include/glm/gtc/../gtc/../ext/quaternion_float.hpp \
- include/glm/gtc/../gtc/../ext/../detail/type_quat.hpp \
- include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.hpp \
- include/glm/gtc/../gtc/../ext/../detail/../ext/quaternion_relational.inl \
- include/glm/gtc/../gtc/../ext/../detail/type_quat.inl \
- include/glm/gtc/../gtc/../ext/quaternion_float_precision.hpp \
- include/glm/gtc/../gtc/../ext/quaternion_double.hpp \
- include/glm/gtc/../gtc/../ext/quaternion_double_precision.hpp \
- include/glm/gtc/../gtc/../ext/quaternion_trigonometric.hpp \
- include/glm/gtc/../gtc/../ext/quaternion_trigonometric.inl \
- include/glm/gtc/../gtc/../ext/quaternion_transform.hpp \
- include/glm/gtc/../gtc/../ext/quaternion_transform.inl \
- include/glm/gtc/../gtc/quaternion.inl include/glm/gtc/../gtc/epsilon.hpp \
- include/glm/gtc/../gtc/../detail/setup.hpp \
- include/glm/gtc/../gtc/epsilon.inl include/glm/gtc/../gtc/vec1.hpp \
- include/glm/gtc/../gtc/../ext/vector_bool1.hpp \
- include/glm/gtc/../gtc/../ext/vector_bool1_precision.hpp \
- include/glm/gtc/../gtc/../ext/vector_float1.hpp \
- include/glm/gtc/../gtc/../ext/vector_float1_precision.hpp \
- include/glm/gtc/../gtc/../ext/vector_double1.hpp \
- include/glm/gtc/../gtc/../ext/vector_double1_precision.hpp \
- include/glm/gtc/../gtc/../ext/vector_int1.hpp \
- include/glm/gtc/../gtc/../ext/vector_int1_precision.hpp \
- include/glm/gtc/../gtc/../ext/vector_uint1.hpp \
- include/glm/gtc/../gtc/../ext/vector_uint1_precision.hpp \
- include/glm/gtc/type_ptr.inl headers/TR/Butterflies.h \
- headers/TR/ButterflyShader.h headers/TR/InversionShader.h \
- headers/TR/WaterNormals.h headers/TR/TRLensFlare.h \
- headers/TR/GroupEntity.h headers/TR/TRSceneEntity.h \
- headers/TR/TexturedModel.h headers/TR/ModelSkin.h \
- headers/TR/TRStaticBatch.h headers/TR/DefrEntityRenderer.h \
- headers/TR/DefrEntityShader.h headers/TR/InstancedEntityShader.h \
- headers/TR/StaticEntityRenderer.h headers/TR/DefrTerrainRenderer.h \
- headers/TR/DefrTerrainShader.h headers/TR/DefrSkyboxRenderer.h \
- headers/TR/DefrSkyboxShader.h headers/TR/PlasticWaterRenderer.h \
- headers/TR/PlasticWaterShader.h headers/TR/FFTWaterRenderer.h \
- headers/TR/FFTWaterShader.h headers/TR/SunRenderer.h \
- headers/TR/SunShader.h headers/TR/DefferedProcessing.h \
- headers/TR/DefferedShader.h headers/TR/TRDisplayManager.h \
- headers/TR/TRFbo.h headers/TR/ParticleRenderer.h \
- headers/TR/ParticleShader.h headers/TR/GaussianBlur.h \
- headers/TR/BlurShader.h headers/TR/BloomCombiner.h \
- headers/TR/BloomShader.h headers/TR/FXAA.h headers/TR/FXAAShader.h \
- headers/TR/FlareRenderer.h headers/TR/FlareShader.h \
- headers/TR/FlareQueryShader.h headers/TR/CurtainRenderer.h \
- headers/TR/CurtainShader.h headers/TP/ThreadPool.hpp \
- headers/SF/StormFrontGame.h headers/TR/RogueCamera.h \
- headers/SF/SFResources.h headers/TR/TRAudio.h include/AL/alc.h \
- include/AL/al.h headers/TR/TRStreamAudio.h headers/TR/TRAudioSource.h \
- include/imgui/imgui.h include/imgui/imconfig.h headers/SF/SFPlayer.h \
- headers/TR/TRSpatialEntity.h headers/TR/TRMath.h \
- headers/TR/LeafGeometry.h headers/TR/DynamicBounds.h \
- headers/SF/SFCamera.h headers/SF/GunnerCamera.h headers/SF/SFPhysics.h \
- headers/SF/AOES.h headers/SF/EnemyMissile.h headers/SF/SFMissile.h \
- headers/SF/BinaryUtil.h headers/SF/GameState.h headers/SF/SFEnemy.h \
- headers/SF/SFPath.h headers/SF/PathData.h headers/SF/Blueprint.h \
- headers/SF/SFMortar.h headers/SF/SFPhaser.h headers/SF/MenuTypes.h
+obj/disabled.o: src/stormfront/disabled.cpp
 
-	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/stormfront/main.cpp -o obj/main.o
+	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/stormfront/disabled.cpp -o obj/disabled.o
 obj/DevMode.o: src/stormfront/util/DevMode.cpp headers/SF/DevMode.h \
  headers/TR/TRScene.h include/glm/glm.hpp include/glm/detail/_fixes.hpp \
  include/glm/detail/setup.hpp include/glm/detail/../simd/platform.h \
@@ -11907,6 +12320,7 @@ obj/StormFrontGame.o: src/stormfront/game/StormFrontGame.cpp \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -12699,6 +13113,7 @@ obj/PauseMenu.o: src/stormfront/game/menus/PauseMenu.cpp \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -12920,6 +13335,7 @@ obj/Settings.o: src/stormfront/game/menus/Settings.cpp \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -13148,6 +13564,7 @@ obj/MainMenu.o: src/stormfront/game/menus/MainMenu.cpp \
  headers/TR/FFTWaterShader.h headers/TR/TRDisplayManager.h \
  include/GLFW/glfw3.h headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/ParticleShader.h \
  headers/TR/GaussianBlur.h headers/TR/BlurShader.h \
@@ -15416,5 +15833,5 @@ obj/SFMissile.o: src/stormfront/player/missiles/SFMissile.cpp \
  headers/TR/TRDisplayManager.h include/GLFW/glfw3.h
 
 	g++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" src/stormfront/player/missiles/SFMissile.cpp -o obj/SFMissile.o
-bin/ExecuteMe: obj/TRMath.o obj/TRUtil.o obj/TRRay.o obj/TRKeyboard.o obj/ThreadPool.o obj/QuadTree.o obj/BoundingVolume.o obj/DynamicBounds.o obj/TesseractEngine.o obj/TRDisplayManager.o obj/FlareRenderer.o obj/FlareShader.o obj/FlareQueryShader.o obj/CurtainRenderer.o obj/CurtainShader.o obj/DefferedRenderSystem.o obj/DefrSkyboxRenderer.o obj/DefrSkyboxShader.o obj/ParticleRenderer.o obj/ParticleShader.o obj/DefrTerrainShader.o obj/DefrTerrainRenderer.o obj/NormalCompShader.o obj/NormalCompGen.o obj/FFTWaterShader.o obj/FFTWaterRenderer.o obj/DefrEntityShader.o obj/DefrEntityRenderer.o obj/InstancedEntityShader.o obj/StaticEntityRenderer.o obj/PlasticWaterRenderer.o obj/PlasticWaterShader.o obj/SunRenderer.o obj/SunShader.o obj/TRAudioSource.o obj/TRAudio.o obj/TRStreamAudio.o obj/imgui_demo.o obj/imgui_draw.o obj/imgui.o obj/imgui_widgets.o obj/imgui_impl_opengl3.o obj/imgui_impl_glfw.o obj/FXAAShader.o obj/FXAA.o obj/BloomCombiner.o obj/BloomShader.o obj/DefferedProcessing.o obj/DefferedShader.o obj/GaussianBlur.o obj/BlurShader.o obj/ShaderProgram.o obj/OBJParser.o obj/TRLoader.o obj/TRFbo.o obj/TRTexture.o obj/ModelSkin.o obj/MeshData.o obj/TexturedModel.o obj/RawModel.o obj/TRScene.o obj/TRSkybox.o obj/TRTerrain.o obj/ParticleManager.o obj/TRParticle.o obj/RogueCamera.o obj/TRCamera.o obj/TRPlasticWater.o obj/FFTCtx.o obj/FFTWater.o obj/Butterflies.o obj/ButterflyShader.o obj/WaterNormals.o obj/FFTPreComp.o obj/InversionShader.o obj/FreqShader.o obj/FreqDomain.o obj/GroupEntity.o obj/TRSceneEntity.o obj/SimpleGeometry.o obj/TRSpatialEntity.o obj/TRStaticBatch.o obj/main.o obj/DevMode.o obj/SFPhysics.o obj/StormFrontGame.o obj/SFResources.o obj/SFPhaser.o obj/SFMortar.o obj/PauseMenu.o obj/Settings.o obj/MainMenu.o obj/GameState.o obj/SFShop.o obj/EnemyMissile.o obj/SFPath.o obj/PathData.o obj/SFEnemy.o obj/TreborTruck.o obj/SFCamera.o obj/GunnerCamera.o obj/SFPlayer.o obj/SFMissile.o
-	g++ -std=c++17 -O0 -pthread -MMD -Wall -L"lib" obj/TRMath.o obj/TRUtil.o obj/TRRay.o obj/TRKeyboard.o obj/ThreadPool.o obj/QuadTree.o obj/BoundingVolume.o obj/DynamicBounds.o obj/TesseractEngine.o obj/TRDisplayManager.o obj/FlareRenderer.o obj/FlareShader.o obj/FlareQueryShader.o obj/CurtainRenderer.o obj/CurtainShader.o obj/DefferedRenderSystem.o obj/DefrSkyboxRenderer.o obj/DefrSkyboxShader.o obj/ParticleRenderer.o obj/ParticleShader.o obj/DefrTerrainShader.o obj/DefrTerrainRenderer.o obj/NormalCompShader.o obj/NormalCompGen.o obj/FFTWaterShader.o obj/FFTWaterRenderer.o obj/DefrEntityShader.o obj/DefrEntityRenderer.o obj/InstancedEntityShader.o obj/StaticEntityRenderer.o obj/PlasticWaterRenderer.o obj/PlasticWaterShader.o obj/SunRenderer.o obj/SunShader.o obj/TRAudioSource.o obj/TRAudio.o obj/TRStreamAudio.o obj/imgui_demo.o obj/imgui_draw.o obj/imgui.o obj/imgui_widgets.o obj/imgui_impl_opengl3.o obj/imgui_impl_glfw.o obj/FXAAShader.o obj/FXAA.o obj/BloomCombiner.o obj/BloomShader.o obj/DefferedProcessing.o obj/DefferedShader.o obj/GaussianBlur.o obj/BlurShader.o obj/ShaderProgram.o obj/OBJParser.o obj/TRLoader.o obj/TRFbo.o obj/TRTexture.o obj/ModelSkin.o obj/MeshData.o obj/TexturedModel.o obj/RawModel.o obj/TRScene.o obj/TRSkybox.o obj/TRTerrain.o obj/ParticleManager.o obj/TRParticle.o obj/RogueCamera.o obj/TRCamera.o obj/TRPlasticWater.o obj/FFTCtx.o obj/FFTWater.o obj/Butterflies.o obj/ButterflyShader.o obj/WaterNormals.o obj/FFTPreComp.o obj/InversionShader.o obj/FreqShader.o obj/FreqDomain.o obj/GroupEntity.o obj/TRSceneEntity.o obj/SimpleGeometry.o obj/TRSpatialEntity.o obj/TRStaticBatch.o obj/main.o obj/DevMode.o obj/SFPhysics.o obj/StormFrontGame.o obj/SFResources.o obj/SFPhaser.o obj/SFMortar.o obj/PauseMenu.o obj/Settings.o obj/MainMenu.o obj/GameState.o obj/SFShop.o obj/EnemyMissile.o obj/SFPath.o obj/PathData.o obj/SFEnemy.o obj/TreborTruck.o obj/SFCamera.o obj/GunnerCamera.o obj/SFPlayer.o obj/SFMissile.o -lGLEW -lGL -lGLU -lglfw -lopenal -o bin/ExecuteMe
+bin/ExecuteMe: obj/main.o obj/dragon.o obj/TRMath.o obj/TRUtil.o obj/TRRay.o obj/TRKeyboard.o obj/ThreadPool.o obj/QuadTree.o obj/BoundingVolume.o obj/DynamicBounds.o obj/TesseractEngine.o obj/TRDisplayManager.o obj/FlareRenderer.o obj/FlareShader.o obj/FlareQueryShader.o obj/CurtainRenderer.o obj/CurtainShader.o obj/DefferedRenderSystem.o obj/DefrSkyboxRenderer.o obj/DefrSkyboxShader.o obj/ParticleRenderer.o obj/ParticleShader.o obj/DefrTerrainShader.o obj/DefrTerrainRenderer.o obj/NormalCompShader.o obj/NormalCompGen.o obj/FFTWaterShader.o obj/FFTWaterRenderer.o obj/DefrEntityShader.o obj/DefrEntityRenderer.o obj/InstancedEntityShader.o obj/StaticEntityRenderer.o obj/PlasticWaterRenderer.o obj/PlasticWaterShader.o obj/SunRenderer.o obj/SunShader.o obj/TRAudioSource.o obj/TRAudio.o obj/TRStreamAudio.o obj/imgui_demo.o obj/imgui_draw.o obj/imgui.o obj/imgui_widgets.o obj/imgui_impl_opengl3.o obj/imgui_impl_glfw.o obj/FXAAShader.o obj/FXAA.o obj/BloomCombiner.o obj/BloomShader.o obj/DefferedProcessingW.o obj/DefferedShaderW.o obj/DefferedProcessing.o obj/DefferedShader.o obj/GaussianBlur.o obj/BlurShader.o obj/ShaderProgram.o obj/OBJParser.o obj/TRLoader.o obj/TRFbo.o obj/TRTexture.o obj/ModelSkin.o obj/MeshData.o obj/TexturedModel.o obj/RawModel.o obj/TRScene.o obj/TRSkybox.o obj/TRTerrain.o obj/ParticleManager.o obj/TRParticle.o obj/RogueCamera.o obj/TRCamera.o obj/TRPlasticWater.o obj/FFTCtx.o obj/FFTWater.o obj/Butterflies.o obj/ButterflyShader.o obj/WaterNormals.o obj/FFTPreComp.o obj/InversionShader.o obj/FreqShader.o obj/FreqDomain.o obj/GroupEntity.o obj/TRSceneEntity.o obj/SimpleGeometry.o obj/TRSpatialEntity.o obj/TRStaticBatch.o obj/disabled.o obj/DevMode.o obj/SFPhysics.o obj/StormFrontGame.o obj/SFResources.o obj/SFPhaser.o obj/SFMortar.o obj/PauseMenu.o obj/Settings.o obj/MainMenu.o obj/GameState.o obj/SFShop.o obj/EnemyMissile.o obj/SFPath.o obj/PathData.o obj/SFEnemy.o obj/TreborTruck.o obj/SFCamera.o obj/GunnerCamera.o obj/SFPlayer.o obj/SFMissile.o
+	g++ -std=c++17 -O0 -pthread -MMD -Wall -L"lib" obj/main.o obj/dragon.o obj/TRMath.o obj/TRUtil.o obj/TRRay.o obj/TRKeyboard.o obj/ThreadPool.o obj/QuadTree.o obj/BoundingVolume.o obj/DynamicBounds.o obj/TesseractEngine.o obj/TRDisplayManager.o obj/FlareRenderer.o obj/FlareShader.o obj/FlareQueryShader.o obj/CurtainRenderer.o obj/CurtainShader.o obj/DefferedRenderSystem.o obj/DefrSkyboxRenderer.o obj/DefrSkyboxShader.o obj/ParticleRenderer.o obj/ParticleShader.o obj/DefrTerrainShader.o obj/DefrTerrainRenderer.o obj/NormalCompShader.o obj/NormalCompGen.o obj/FFTWaterShader.o obj/FFTWaterRenderer.o obj/DefrEntityShader.o obj/DefrEntityRenderer.o obj/InstancedEntityShader.o obj/StaticEntityRenderer.o obj/PlasticWaterRenderer.o obj/PlasticWaterShader.o obj/SunRenderer.o obj/SunShader.o obj/TRAudioSource.o obj/TRAudio.o obj/TRStreamAudio.o obj/imgui_demo.o obj/imgui_draw.o obj/imgui.o obj/imgui_widgets.o obj/imgui_impl_opengl3.o obj/imgui_impl_glfw.o obj/FXAAShader.o obj/FXAA.o obj/BloomCombiner.o obj/BloomShader.o obj/DefferedProcessingW.o obj/DefferedShaderW.o obj/DefferedProcessing.o obj/DefferedShader.o obj/GaussianBlur.o obj/BlurShader.o obj/ShaderProgram.o obj/OBJParser.o obj/TRLoader.o obj/TRFbo.o obj/TRTexture.o obj/ModelSkin.o obj/MeshData.o obj/TexturedModel.o obj/RawModel.o obj/TRScene.o obj/TRSkybox.o obj/TRTerrain.o obj/ParticleManager.o obj/TRParticle.o obj/RogueCamera.o obj/TRCamera.o obj/TRPlasticWater.o obj/FFTCtx.o obj/FFTWater.o obj/Butterflies.o obj/ButterflyShader.o obj/WaterNormals.o obj/FFTPreComp.o obj/InversionShader.o obj/FreqShader.o obj/FreqDomain.o obj/GroupEntity.o obj/TRSceneEntity.o obj/SimpleGeometry.o obj/TRSpatialEntity.o obj/TRStaticBatch.o obj/disabled.o obj/DevMode.o obj/SFPhysics.o obj/StormFrontGame.o obj/SFResources.o obj/SFPhaser.o obj/SFMortar.o obj/PauseMenu.o obj/Settings.o obj/MainMenu.o obj/GameState.o obj/SFShop.o obj/EnemyMissile.o obj/SFPath.o obj/PathData.o obj/SFEnemy.o obj/TreborTruck.o obj/SFCamera.o obj/GunnerCamera.o obj/SFPlayer.o obj/SFMissile.o -lGLEW -lGL -lGLU -lglfw -lopenal -o bin/ExecuteMe

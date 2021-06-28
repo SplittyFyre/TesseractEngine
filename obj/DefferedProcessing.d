@@ -198,7 +198,8 @@ obj/DefferedProcessing.o: src/engine/post/deffered/DefferedProcessing.cpp \
  headers/TR/FFTWaterRenderer.h headers/TR/FFTWaterShader.h \
  headers/TR/TRDisplayManager.h include/GLFW/glfw3.h \
  headers/TR/SunRenderer.h headers/TR/SunShader.h \
- headers/TR/DefferedProcessing.h headers/TR/TRDisplayManager.h \
+ headers/TR/DefferedProcessing.h headers/TR/DefferedProcessingW.h \
+ headers/TR/DefferedShaderW.h headers/TR/TRDisplayManager.h \
  headers/TR/TRFbo.h headers/TR/ParticleRenderer.h \
  headers/TR/ParticleShader.h headers/TR/GaussianBlur.h \
  headers/TR/BlurShader.h headers/TR/BloomCombiner.h \

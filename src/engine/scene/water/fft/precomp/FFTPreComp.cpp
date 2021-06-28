@@ -46,9 +46,9 @@ FFTData FFTPreComp::compute(const FFTCtx &ctx) {
     for (int y = 0; y < N; y++) {
         for (int x = 0; x < N; x++) {
 
-            float n = float(x) - float(N) / 2.f; float m = float(y) - float(N) / 2.f;
+            //float n = float(x) - float(N) / 2.f; float m = float(y) - float(N) / 2.f;
 
-            glm::vec2 k(2.f * M_PI * n / ctx.L, 2.f * M_PI * m / ctx.L);
+            glm::vec2 k(2.f * M_PI * float(y) / ctx.L, 2.f * M_PI * float(x) / ctx.L);
 
             float h0k = std::sqrt(phillips(k, ctx)) / std::sqrt(2.f);
             float h0minusk = std::sqrt(phillips(-k, ctx)) / std::sqrt(2.f); 

@@ -11,6 +11,7 @@
 #include <memory>
 #include "DefferedRenderSystem.h"
 #include "DefferedProcessing.h"
+#include "DefferedProcessingW.h"
 #include "TRDisplayManager.h"
 #include "TRFbo.h"
 #include "ParticleRenderer.h"
@@ -50,6 +51,7 @@ private:
 
 	DefferedRenderSystem *renderer;
 	DefferedProcessing *defferedProcessor;
+	DefferedProcessingW *defferedProcessorWater;
 	ParticleRenderer *particleRenderer;
 	FlareRenderer *lensFlareRenderer;
 	CurtainRenderer curtainRenderer;

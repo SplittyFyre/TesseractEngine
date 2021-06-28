@@ -1,4 +1,4 @@
-obj/main.o: src/stormfront/main.cpp headers/TR/TRDisplayManager.h \
+obj/main.o: src/demo/main.cpp headers/TR/TRDisplayManager.h \
  include/GL/glew.h include/GL/glu.h include/GL/gl.h include/GLFW/glfw3.h \
  headers/TR/TRKeyboard.h headers/TR/TesseractEngine.h \
  headers/TR/DefferedRenderSystem.h include/glm/glm.hpp \
@@ -196,7 +196,8 @@ obj/main.o: src/stormfront/main.cpp headers/TR/TRDisplayManager.h \
  headers/TR/PlasticWaterShader.h headers/TR/FFTWaterRenderer.h \
  headers/TR/FFTWaterShader.h headers/TR/SunRenderer.h \
  headers/TR/SunShader.h headers/TR/DefferedProcessing.h \
- headers/TR/DefferedShader.h headers/TR/TRDisplayManager.h \
+ headers/TR/DefferedShader.h headers/TR/DefferedProcessingW.h \
+ headers/TR/DefferedShaderW.h headers/TR/TRDisplayManager.h \
  headers/TR/TRFbo.h headers/TR/ParticleRenderer.h \
  headers/TR/ParticleShader.h headers/TR/GaussianBlur.h \
  headers/TR/BlurShader.h headers/TR/BloomCombiner.h \
@@ -204,14 +205,7 @@ obj/main.o: src/stormfront/main.cpp headers/TR/TRDisplayManager.h \
  headers/TR/FlareRenderer.h headers/TR/FlareShader.h \
  headers/TR/FlareQueryShader.h headers/TR/CurtainRenderer.h \
  headers/TR/CurtainShader.h headers/TP/ThreadPool.hpp \
- headers/SF/StormFrontGame.h headers/TR/RogueCamera.h \
- headers/SF/SFResources.h headers/TR/TRAudio.h include/AL/alc.h \
- include/AL/al.h headers/TR/TRStreamAudio.h headers/TR/TRAudioSource.h \
- include/imgui/imgui.h include/imgui/imconfig.h headers/SF/SFPlayer.h \
- headers/TR/TRSpatialEntity.h headers/TR/TRMath.h \
- headers/TR/LeafGeometry.h headers/TR/DynamicBounds.h \
- headers/SF/SFCamera.h headers/SF/GunnerCamera.h headers/SF/SFPhysics.h \
- headers/SF/AOES.h headers/SF/EnemyMissile.h headers/SF/SFMissile.h \
- headers/SF/BinaryUtil.h headers/SF/GameState.h headers/SF/SFEnemy.h \
- headers/SF/SFPath.h headers/SF/PathData.h headers/SF/Blueprint.h \
- headers/SF/SFMortar.h headers/SF/SFPhaser.h headers/SF/MenuTypes.h
+ headers/TR/RogueCamera.h headers/TR/OBJParser.h \
+ headers/TR/SimpleGeometry.h headers/TR/TRSpatialEntity.h \
+ headers/TR/TRMath.h headers/TR/DynamicBounds.h include/imgui/imgui.h \
+ include/imgui/imconfig.h

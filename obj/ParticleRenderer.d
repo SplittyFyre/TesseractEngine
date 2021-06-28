@@ -199,6 +199,7 @@ obj/ParticleRenderer.o: \
  headers/TR/TRDisplayManager.h include/GLFW/glfw3.h \
  headers/TR/SunRenderer.h headers/TR/SunShader.h \
  headers/TR/DefferedProcessing.h headers/TR/DefferedShader.h \
+ headers/TR/DefferedProcessingW.h headers/TR/DefferedShaderW.h \
  headers/TR/TRDisplayManager.h headers/TR/TRFbo.h \
  headers/TR/ParticleRenderer.h headers/TR/GaussianBlur.h \
  headers/TR/BlurShader.h headers/TR/BloomCombiner.h \
