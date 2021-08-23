@@ -14,6 +14,21 @@ void DefferedRenderSystem::prepare() {
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
+void DefferedRenderSystem::renderReflectionPass(TRScene *scene) {
+    prepare();
+
+    scene->camera->position.y *= -1;
+    scene->camera->pitch *= -1;
+    scene->camera->updateMatrices();
+
+    if (scene->skybox != nullptr)
+        defrSkyboxRenderer.render(scene);
+
+    scene->camera->position.y *= -1;
+    scene->camera->pitch *= -1;
+    scene->camera->updateMatrices();
+}
+
 void DefferedRenderSystem::renderMainPass(TRScene *scene, std::future<void> &sgUpdate) {
 
     prepare();

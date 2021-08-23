@@ -8,11 +8,12 @@
 class DefferedProcessingW {
 public:
     DefferedProcessingW();
-    void doDefferedProcessing(TRScene *scene, TRFbo *gbuf);
+    void doDefferedProcessing(TRScene *scene, TRFbo *gbuf, TRFbo *ree, TRFbo *reflection);
 private:
     DefferedShaderW shader;
     void start();
     void end();
+    TRTexture *foamTex;
 };
 
 #endif /* HEADERS_TR_DEFFEREDPROCESSINGW */

@@ -61,7 +61,7 @@ private:
 	FXAA *fxaa;
 
 	TRFbo *gbuffer;
-	TRFbo *fbo;
+	TRFbo *fbo, *reflection;
 	TRFbo *aa;
 
 	void doUpdates(TRScene *scene);

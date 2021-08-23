@@ -42,13 +42,13 @@ public:
 	inline void notifyResize() { pChanged = true; }
 
 	void update();
+	void updateMatrices();
 
 	static std::unordered_set<TRCamera*> cameras;
 private:
 	glm::mat4 viewMatrix, projectionMatrix, VPMatrix;
 	glm::mat4 invViewMatrix, invProjectionMatrix;
 	float tang, cx, cy;
-	void updateMatrices();
 	void extractAxes();
 	virtual void move() {};
 

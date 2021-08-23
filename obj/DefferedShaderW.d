@@ -187,4 +187,5 @@ obj/DefferedShaderW.o: \
  headers/TR/WaterNormals.h headers/TR/TRLensFlare.h \
  headers/TR/GroupEntity.h headers/TR/TRSceneEntity.h \
  headers/TR/TexturedModel.h headers/TR/ModelSkin.h \
- headers/TR/TRStaticBatch.h
+ headers/TR/TRStaticBatch.h headers/TR/TRDisplayManager.h \
+ include/GLFW/glfw3.h

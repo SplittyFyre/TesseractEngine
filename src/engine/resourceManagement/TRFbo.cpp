@@ -24,6 +24,7 @@ void TRFbo::blit(TRFbo *output, int read, int draw, bool depth) {
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, output->fboID);
 	glBindFramebuffer(GL_READ_FRAMEBUFFER, this->fboID);
 	glReadBuffer(GL_COLOR_ATTACHMENT0 + read);
+	glDrawBuffer(GL_COLOR_ATTACHMENT0 + draw);
 
 	GLbitfield mask = GL_COLOR_BUFFER_BIT;
 	if (depth)
@@ -31,7 +32,7 @@ void TRFbo::blit(TRFbo *output, int read, int draw, bool depth) {
 	glBlitFramebuffer(0, 0, this->width, this->height, 0, 0, output->width, output->height,
 	 mask, GL_NEAREST);
 
-	 unbind();
+	unbind();
 }
 
 void TRFbo::blitToScreen(int read) {

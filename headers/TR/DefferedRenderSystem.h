@@ -18,6 +18,7 @@ public:
     DefferedRenderSystem(unsigned int maxEntityInstances);
     ~DefferedRenderSystem();
 
+    void renderReflectionPass(TRScene *scene);
     void renderMainPass(TRScene *scene, std::future<void> &sgUpdate);
 
 private:

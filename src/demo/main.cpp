@@ -23,12 +23,12 @@ void fftdemo() {
 
     FFTCtx ctx = FFTCtx(512);
     ctx.timestep = 1.f;
-    ctx.A = 6.f * 65.f;
+    ctx.A = 0.6f;
     ctx.timestep = 0.5f;
 
     FFTData fftdat = FFTPreComp::compute(ctx);
 
-    scene = new TRScene(std::make_shared<RogueCamera>(glm::vec3(1073.74, 123.3, 1242.37), 1.f, 50000.f, 70.f, 100.f, 50.f));
+    scene = new TRScene(std::make_shared<RogueCamera>(glm::vec3(0.f, 35.f, 0.f), 1.f, 2000.f, 70.f, 60.f, 30.f));
     scene->camera->pitch = 44.235;
     scene->camera->yaw = -33.03;
     scene->setAmbientLight(0.5f);
@@ -41,7 +41,7 @@ void fftdemo() {
     );
     water->tiling = 32.f;
     water->edgesPerRTHeight = 25.f;
-    water->normalStrength = 1.818181f;
+    water->normalStrength = 0.08f;
 
     water->reflectivity = 0.4f;
     water->shineDamper = 20.f;
@@ -65,8 +65,14 @@ void fftdemo() {
         "res/daytime/FT.png"
     };
 
-    scene->skybox = std::move(std::make_unique<TRSkyBox>(10000.f));
+    scene->skybox = std::move(std::make_unique<TRSkyBox>(1000.f));
     scene->skybox->texture1 = TRLoader::loadCubeMap(textures);
+
+
+    auto a = TRLoader::loadTexture("res/desert_sand.png");
+    auto pack = std::make_shared<TerrainTexInfo>(TRLoader::loadTexture("res/Island-Splatmap.png"), a, a, a, a, 240.f);
+    scene->terrain = std::move(std::unique_ptr<TRTerrain>(new TRTerrain(glm::vec3(-500.f, 10.f, -500.f), 8, 125.f, 75.f, TRLoader::loadHeightMap("res/heightmap.png"), pack, 0.05f)));
+    scene->terrain->edgesPerRTHeight = 30.f;
 
 
     scene->lights.push_back(std::make_shared<TRLight>(glm::vec3(0, 200000, -100000), glm::vec3(1.3f)));
@@ -82,7 +88,13 @@ void fftdemo() {
             }
         }
 
-        ImGui::Begin("Normal LMAO");
+        ImGui::Begin("Debug");
+        ImGui::Text("x: %.3f", scene->camera->position.x);
+        ImGui::Text("y: %.3f", scene->camera->position.y);
+        ImGui::Text("z: %.3f", scene->camera->position.z);
+
+        ImGui::Spacing();
+
         ImGui::SliderFloat("normal", &scene->fftwater->normalStrength, 0.0, 10.0);
         ImGui::End();
 
@@ -90,6 +102,7 @@ void fftdemo() {
         ImGui::Image((void*) (uintptr_t) scene->fftwater->getDisplacementMap()->texID, ImVec2(512, 512));
         ImGui::End();*/
 
+        //scene->camera->position.y = scene->terrain->getHeightBC(scene->camera->position.x, scene->camera->position.z) + 1.85f;
         scene->fftwater->colour = glm::vec3(0.325f, 0.393f, 0.454f) + glm::vec3(add);
         
         engine->renderScene(scene);

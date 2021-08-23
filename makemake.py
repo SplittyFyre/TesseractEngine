@@ -3,8 +3,8 @@ import os.path
 
 print('Making make...')
 
-cco = '\tg++ -std=c++17 -O0 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" {} -o {}\n'
-ccl = '\tg++ -std=c++17 -O0 -pthread -MMD -Wall -L"lib" {} -lGLEW -lGL -lGLU -lglfw -lopenal -o {}\n'
+cco = '\tg++ -std=c++17 -O2 -pthread -MMD -Wall -c -I"include" -I"headers" -I"include/imgui" {} -o {}\n'
+ccl = '\tg++ -std=c++17 -O2 -pthread -MMD -Wall -L"lib" {} -lGLEW -lGL -lGLU -lglfw -lopenal -o {}\n'
 
 def getCCO(source, objPath):
     return cco.format(source, objPath)
