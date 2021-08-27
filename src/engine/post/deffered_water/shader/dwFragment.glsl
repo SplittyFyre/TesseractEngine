@@ -14,7 +14,6 @@ uniform sampler2D depthTexture;
 uniform sampler2D heightMap;
 uniform sampler2D normalMap;
 uniform sampler2D foamMap;
-uniform sampler2D reflectionTexture;
 
 uniform mat4 invProjectionMatrix;
 uniform mat4 invViewMatrix;
@@ -29,7 +28,7 @@ uniform float timer;
 
 
 float waterHeight = 0.0;
-float scale = 100.0; // how many meters per heightfield
+float scale = 50.0; // how many meters per heightfield
 float R0 = 0.5;
 float refractionStrength = 0.0;
 float refractionScale = 0.005;
@@ -99,6 +98,13 @@ vec4 applyLight(vec4 textureColour, vec3 usePos, vec3 normal, vec3 unitCamVec, f
     return vec4(totalDiffuse, 1.0) * textureColour + vec4(max(totalSpecular, foam), 1.0);
 }
 
+vec4 applyFog(vec4 colin, float d, vec3 usePos) {
+    float visibility = exp(-pow(d * fogDensity, fogGradient));
+    visibility = clamp(visibility, 0.0, 1.0);
+
+    return mix(vec4(skyColour, 1.0), colin, visibility);
+}
+
 vec4 waterCalc() {
 
     vec3 colour2 = texture(diffuseTexture, textureCoords).rgb;
@@ -149,8 +155,6 @@ vec4 waterCalc() {
     texCoordProj /= texCoordProj.w;
     texCoordProj.xy = (texCoordProj.xy / 2.0) + 0.5;
     texCoordProj.y = 1.0 - texCoordProj.y;
-
-    vec3 reflection = texture(reflectionTexture, texCoordProj.xy).rgb;
     
     float fresnel = fresnelTerm(normal, eyeVecNorm);
 
@@ -180,16 +184,13 @@ vec4 waterCalc() {
     colour = applyLight(vec4(colour, 1.0), surfacePoint, normal, eyeVecNorm, 0.4, 20.0, foam).rgb;
     colour = mix(refraction, colour, saturate(depth * shoreHardness));
 
+    colour = applyFog(vec4(colour, 1.0), length(surfacePoint.xyz - cameraPos.xyz), surfacePoint.xyz).xyz;
+
     vec4 ans = vec4(mix(colour, colour2, step(level, worldPos.y)), 1.0);
+
     return ans;
 }
 
 void main(void) {
-
-    float depth = texture(depthTexture, textureCoords).x;
-    vec4 viewPos = depthToViewPos(depth);
-    vec4 usePos = invViewMatrix * viewPos;
-    
-    //outColour = texture(diffuseTexture, textureCoords);
     outColour = waterCalc();
 }

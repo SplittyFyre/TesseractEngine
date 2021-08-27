@@ -11,7 +11,7 @@ DefferedProcessingW::DefferedProcessingW() {
     foamTex = TRLoader::loadTexture("res/foam.png");
 }
 
-void DefferedProcessingW::doDefferedProcessing(TRScene *scene, TRFbo *gbuf, TRFbo *ree, TRFbo *reflection) {
+void DefferedProcessingW::doDefferedProcessing(TRScene *scene, TRFbo *gbuf, TRFbo *ree) {
     start();
     shader.start();
 
@@ -25,8 +25,6 @@ void DefferedProcessingW::doDefferedProcessing(TRScene *scene, TRFbo *gbuf, TRFb
     glBindTexture(GL_TEXTURE_2D, scene->fftwater->getNormalMap()->texID);
     glActiveTexture(GL_TEXTURE4);
     glBindTexture(GL_TEXTURE_2D, foamTex->texID);
-    glActiveTexture(GL_TEXTURE5);
-    glBindTexture(GL_TEXTURE_2D, reflection->getTextureHandle(0));
 
     shader.loadCameraPos(scene->camera->position);
     shader.loadInvProjectionMat(scene->camera->getInvProjectionMatrix());

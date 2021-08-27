@@ -27,7 +27,6 @@ TesseractEngine::TesseractEngine(unsigned int maxEntityInstances, unsigned int m
 	gbuffer = TRLoader::makeFbo(TRDisplayManager::getWidth(), TRDisplayManager::getHeight(), TEX_DEPTH, {GL_RGBA8, GL_RGBA16F, GL_RGBA16F, GL_RGBA32F});
 	fbo = TRLoader::makeFbo(TRDisplayManager::getWidth(), TRDisplayManager::getHeight(), TEX_DEPTH, {GL_RGBA8});
 	aa = TRLoader::makeFbo(TRDisplayManager::getWidth(), TRDisplayManager::getHeight(), NO_DEPTH, {GL_RGBA8});
-	reflection = TRLoader::makeFbo(TRDisplayManager::getWidth(), TRDisplayManager::getHeight(), TEX_DEPTH, {GL_RGBA8});
 
 	renderer = new DefferedRenderSystem(maxEntityInstances);
 	defferedProcessor = new DefferedProcessing();
@@ -64,12 +63,6 @@ void TesseractEngine::renderScene(TRScene *scene) {
 	doUpdates(scene);
 
 	gbuffer->bindToDraw();
-	renderer->renderReflectionPass(scene);
-	gbuffer->unbind();
-
-	gbuffer->blit(reflection, 0, 0, false);
-
-	gbuffer->bindToDraw();
 	renderer->renderMainPass(scene, sceneGraphFuture); 	// main render
 	gbuffer->unbind();
 
@@ -83,15 +76,17 @@ void TesseractEngine::renderScene(TRScene *scene) {
 	lensFlareRenderer->doQuery(scene);
 	fbo->unbind();
 
-	aa->bindToDraw();
-	defferedProcessorWater->doDefferedProcessing(scene, gbuffer, fbo, reflection);
-	aa->unbind();
-
-	fxaa->doFXAA(aa->getTextureHandle(0));
+	if (scene->fftwater && scene->fftwater->renderDeffered) {
+		aa->bindToDraw();
+		defferedProcessorWater->doDefferedProcessing(scene, gbuffer, fbo);
+		aa->unbind();
+		fxaa->doFXAA(aa->getTextureHandle(0));
+	}
+	else {
+		fxaa->doFXAA(fbo->getTextureHandle(0));
+	}	
 										// blur bright buffer
 	//blurrer->renderBlur(gbuffer->getTextureHandle(3));
-
-	//reflection->blitToScreen(0);
 
 	lensFlareRenderer->render(scene);
 

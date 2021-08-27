@@ -27,6 +27,8 @@ public:
     float maxTess = 64.f;
     float tiling = 1.f;
 
+    bool renderDeffered = true;
+
     float reflectivity = 0.2f, shineDamper = 15.f;
     inline const TRTexture * const getNormalMap() const { return normalMap; }
     inline const TRTexture * const getDisplacementMap() const { return butterflies.displacement; }

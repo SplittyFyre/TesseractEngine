@@ -8,7 +8,7 @@
 class DefferedProcessingW {
 public:
     DefferedProcessingW();
-    void doDefferedProcessing(TRScene *scene, TRFbo *gbuf, TRFbo *ree, TRFbo *reflection);
+    void doDefferedProcessing(TRScene *scene, TRFbo *gbuf, TRFbo *ree);
 private:
     DefferedShaderW shader;
     void start();
